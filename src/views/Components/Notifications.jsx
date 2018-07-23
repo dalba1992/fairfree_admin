@@ -79,7 +79,7 @@ class Notifications extends React.Component {
       message: (
         <div>
           <div>
-            Welcome to <b>Now UI Dashboard React</b> - a beautiful freebie for
+            Welcome to <b>FairFree</b> - a beautiful freebie for
             every web developer.
           </div>
         </div>

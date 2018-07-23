@@ -14,9 +14,9 @@ import {
 
 import { Button } from "components";
 
-import nowLogo from "assets/img/now-logo.png";
+import nowLogo from "assets/img/logo.png";
 
-import bgImage from "assets/img/bg14.jpg";
+// import bgImage from "assets/img/bg14.jpg";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class LoginPage extends React.Component {
                         </InputGroupAddon>
                         <Input
                           type="text"
-                          placeholder="First Name..."
+                          placeholder="Username"
                           onFocus={e => this.setState({ firstnameFocus: true })}
                           onBlur={e => this.setState({ firstnameFocus: false })}
                         />
@@ -63,11 +63,11 @@ class LoginPage extends React.Component {
                         }
                       >
                         <InputGroupAddon>
-                          <i className="now-ui-icons text_caps-small" />
+                          <i className="now-ui-icons ui-1_lock-circle-open" />
                         </InputGroupAddon>
                         <Input
                           type="text"
-                          placeholder="Last Name..."
+                          placeholder="Password"
                           onFocus={e => this.setState({ lastnameFocus: true })}
                           onBlur={e => this.setState({ lastnameFocus: false })}
                         />
@@ -81,9 +81,9 @@ class LoginPage extends React.Component {
                         round
                         href="#pablo"
                       >
-                        Get started
+                        Login
                       </Button>
-                      <div className="pull-left">
+                      {/* <div className="pull-left">
                         <h6>
                           <a href="#pablo" className="link footer-link">
                             Create Account
@@ -96,7 +96,7 @@ class LoginPage extends React.Component {
                             Need Help?
                           </a>
                         </h6>
-                      </div>
+                      </div> */}
                     </CardFooter>
                   </Card>
                 </Form>
@@ -106,7 +106,8 @@ class LoginPage extends React.Component {
         </div>
         <div
           className="full-page-background"
-          style={{ backgroundImage: "url(" + bgImage + ")" }}
+          // style={{ backgroundImage: "url(" + bgImage + ")" }}
+          style={{backgroundColor:'#2CA8FF'}}
         />
       </div>
     );
