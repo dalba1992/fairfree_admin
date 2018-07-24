@@ -103,7 +103,7 @@ class LoginPage extends React.Component {
         <div>
           <NotificationAlert ref="notificationAlert" />
           <div className="full-page-content"
-            style={{ backgroundColor:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
+            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
           >
             <div className="login-page">
               <Container>
