@@ -46,11 +46,11 @@ class Dashboard extends React.Component {
               );
             })}
           </Switch>
-          {// we don't want the Footer to be rendered on full screen maps page
+          {/* {// we don't want the Footer to be rendered on full screen maps page
           this.props.location.pathname.indexOf("full-screen-maps") !==
           -1 ? null : (
             <Footer fluid />
-          )}
+          )} */}
         </div>
       </div>
     );

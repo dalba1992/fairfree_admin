@@ -14,7 +14,7 @@ import {
   Table
 } from "reactstrap";
 // react plugin used to create charts
-import { Line } from "react-chartjs-2";
+import { Line, Pie, Bar, HorizontalBar } from "react-chartjs-2";
 // react plugin for creating vector maps
 import { VectorMap } from "react-jvectormap";
 
@@ -39,32 +39,18 @@ import swim from "assets/img/prada.jpg";
 
 import { table_data } from "variables/general.jsx";
 
-var mapData = {
-  AU: 760,
-  BR: 550,
-  CA: 120,
-  DE: 1300,
-  FR: 540,
-  GB: 690,
-  GE: 200,
-  IN: 200,
-  RO: 600,
-  RU: 300,
-  US: 2920
-};
-
 class Dashboard extends React.Component {
   createTableData() {
     var tableRows = [];
     for (var i = 0; i < table_data.length; i++) {
       tableRows.push(
         <tr key={i}>
-          <td>
+          {/* <td>
             <div className="flag">
               <img src={table_data[i].flag} alt="us_flag" />
             </div>
-          </td>
-          <td>{table_data[i].country}</td>
+          </td> */}
+          <td>{table_data[i].city}</td>
           <td className="text-right">{table_data[i].count}</td>
           <td className="text-right">{table_data[i].percentage}</td>
         </tr>
@@ -92,10 +78,10 @@ class Dashboard extends React.Component {
                   <Row>
                     <Col xs={12} md={3}>
                       <Statistics
-                        iconState="primary"
-                        icon="ui-2_chat-round"
-                        title="859"
-                        subtitle="Messages"
+                        iconState="info"
+                        icon="users_single-02"
+                        title="20,859"
+                        subtitle="ACTIVATION"
                       />
                     </Col>
                     <Col xs={12} md={3}>
@@ -104,26 +90,26 @@ class Dashboard extends React.Component {
                         icon="business_money-coins"
                         title={
                           <span>
-                            <small>$</small>3,521
+                            <small>$</small>153,797,500
                           </span>
                         }
-                        subtitle="Today Revenue"
+                        subtitle="REVENUE"
                       />
                     </Col>
                     <Col xs={12} md={3}>
                       <Statistics
-                        iconState="info"
-                        icon="users_single-02"
+                        iconState="primary"
+                        icon="shopping_cart-simple"
                         title="562"
-                        subtitle="Customers"
+                        subtitle="TICKETS SOLD"
                       />
                     </Col>
                     <Col xs={12} md={3}>
                       <Statistics
                         iconState="danger"
-                        icon="objects_support-17"
-                        title="353"
-                        subtitle="Support Requests"
+                        icon="education_glasses"
+                        title="7,353"
+                        subtitle="VIEW"
                       />
                     </Col>
                   </Row>
@@ -132,12 +118,13 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
           <Row>
+
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Active Users</CardCategory>
-                  <CardTitle tag="h2">34,252</CardTitle>
-                  <UncontrolledDropdown>
+                  <CardCategory>Age Rate</CardCategory>
+                  {/* <CardTitle tag="h2">55,300</CardTitle> */}
+                  {/* <UncontrolledDropdown>
                     <DropdownToggle
                       className="btn-round btn-simple btn-icon"
                       color="default"
@@ -152,7 +139,110 @@ class Dashboard extends React.Component {
                         Remove data
                       </DropdownItem>
                     </DropdownMenu>
-                  </UncontrolledDropdown>
+                  </UncontrolledDropdown> */}
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area-pie">
+                    <Pie
+                      data={dashboardSummerChart.data}
+                      options={dashboardSummerChart.options}
+                    />
+                  </div>
+                  {/* <div className="card-progress">
+                    <Progress badge="Delivery Rate" value="90" />
+                    <Progress color="success" badge="Open Rate" value="60" />
+                    <Progress color="info" badge="Click Rate" value="12" />
+                    <Progress color="primary" badge="Hard Bounce" value="5" />
+                    <Progress color="danger" badge="Spam Report" value="0.11" />
+                  </div> */}
+                  <Table responsive >
+                    <tbody>
+
+                      <tr key={0}>
+                        <td>
+                          <div className="flag" style={{ background: '#E8F225', width: '30px', height: '20px' }}>
+
+                          </div>
+                        </td>
+                        <td>{'10-20'}</td>
+                        <td className="text-right">818</td>
+                        <td className="text-right">57.57%</td>
+                      </tr>
+                      <tr key={1}>
+                        <td>
+                          <div className="flag" style={{ background: '#F24D25', width: '30px', height: '20px' }}>
+                          </div>
+                        </td>
+                        <td>{'20-30'}</td>
+                        <td className="text-right">982</td>
+                        <td className="text-right">12.43%</td>
+                      </tr>
+                      <tr key={2}>
+                        <td>
+                          <div className="flag" style={{ background: '#872193', width: '30px', height: '20px' }}>
+
+                          </div>
+                        </td>
+                        <td>{'30-40'}</td>
+                        <td className="text-right">1.693</td>
+                        <td className="text-right">20.12%</td>
+                      </tr>
+                      <tr key={3}>
+                        <td>
+                          <div className="flag" style={{ background: '#2F8AD3', width: '30px', height: '20px' }}>
+
+                          </div>
+                        </td>
+                        <td>{'40-50'}</td>
+                        <td className="text-right">1526</td>
+                        <td className="text-right">12.74%</td>
+                      </tr>
+                      <tr key={4}>
+                        <td>
+                          <div className="flag" style={{ background: '#429321', width: '30px', height: '20px' }}>
+
+                          </div>
+                        </td>
+                        <td>{'50+'}</td>
+                        <td className="text-right">1.526</td>
+                        <td className="text-right">4.90%</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </CardBody>
+                {/* <CardFooter>
+                  <Stats>
+                    {[
+                      {
+                        i: "now-ui-icons arrows-1_refresh-69",
+                        t: "Just Updated"
+                      }
+                    ]}
+                  </Stats>
+                </CardFooter> */}
+              </Card>
+            </Col>
+            <Col xs={12} md={4}>
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardCategory>Location Rate</CardCategory>
+                  {/* <CardTitle tag="h2">34,252</CardTitle> */}
+                  {/* <UncontrolledDropdown>
+                    <DropdownToggle
+                      className="btn-round btn-simple btn-icon"
+                      color="default"
+                    >
+                      <i className="now-ui-icons loader_gear" />
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>Action</DropdownItem>
+                      <DropdownItem>Another Action</DropdownItem>
+                      <DropdownItem>Something else here</DropdownItem>
+                      <DropdownItem className="text-danger">
+                        Remove data
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown> */}
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
@@ -161,7 +251,7 @@ class Dashboard extends React.Component {
                       options={dashboardActiveUsersChart.options}
                     />
                   </div>
-                  <Table responsive>
+                  <Table responsive >
                     <tbody>{this.createTableData()}</tbody>
                   </Table>
                 </CardBody>
@@ -180,8 +270,55 @@ class Dashboard extends React.Component {
             <Col xs={12} md={4}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Summer Email Campaign</CardCategory>
-                  <CardTitle tag="h2">55,300</CardTitle>
+                  <CardCategory>Gender Rate</CardCategory>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area-stack">
+                    <HorizontalBar
+                      data={dashboardActiveCountriesCard.data}
+                      options={dashboardActiveCountriesCard.options}
+                    />
+                  </div>
+                  <Table responsive>
+                    <tbody>
+
+                      <tr key={0}>
+                        <td>
+                          <div className="flag" style={{ background: '#C8E8FF', width: '30px', height: '20px' }}>
+                          </div>
+                        </td>
+                        <td>{'Male'}</td>
+                        <td className="text-right">70.920</td>
+                        <td className="text-right">67.57%</td>
+                      </tr>
+                      <tr key={1}>
+                        <td>
+                          <div className="flag" style={{ background: '#FFBCC2', width: '30px', height: '20px' }}>
+                          </div>
+                        </td>
+                        <td>{'Female'}</td>
+                        <td className="text-right">51.300</td>
+                        <td className="text-right">32.43%</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </CardBody>
+                {/* <CardFooter>
+                  <Stats>
+                    {[{ i: "now-ui-icons ui-2_time-alarm", t: "Last 7 days" }]}
+                  </Stats>
+                </CardFooter> */}
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+
+            <Col xs={12} md={4}>
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardCategory>Ticket Status</CardCategory>
+                  {/* <CardTitle tag="h2">55,300</CardTitle> */}
                   <UncontrolledDropdown>
                     <DropdownToggle
                       className="btn-round btn-simple btn-icon"
@@ -200,21 +337,18 @@ class Dashboard extends React.Component {
                   </UncontrolledDropdown>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
-                    <Line
+                  {/* <div className="chart-area">
+                    <Pie
                       data={dashboardSummerChart.data}
                       options={dashboardSummerChart.options}
                     />
-                  </div>
+                  </div> */}
                   <div className="card-progress">
-                    <Progress badge="Delivery Rate" value="90" />
-                    <Progress color="success" badge="Open Rate" value="60" />
-                    <Progress color="info" badge="Click Rate" value="12" />
-                    <Progress color="primary" badge="Hard Bounce" value="5" />
-                    <Progress color="danger" badge="Spam Report" value="0.11" />
+                    <Progress badge="CONVERSION RATE" value="16" />
+                    <Progress color="success" badge="ACTIVATION RATE" value="60" />
                   </div>
                 </CardBody>
-                <CardFooter>
+                {/* <CardFooter>
                   <Stats>
                     {[
                       {
@@ -223,60 +357,11 @@ class Dashboard extends React.Component {
                       }
                     ]}
                   </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>Active Countries</CardCategory>
-                  <CardTitle tag="h2">105</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={dashboardActiveCountriesCard.data}
-                      options={dashboardActiveCountriesCard.options}
-                    />
-                  </div>
-                  <VectorMap
-                    map={"world_mill"}
-                    backgroundColor="transparent"
-                    zoomOnScroll={false}
-                    containerStyle={{
-                      width: "100%",
-                      height: "280px"
-                    }}
-                    containerClassName="map"
-                    regionStyle={{
-                      initial: {
-                        fill: "#e4e4e4",
-                        "fill-opacity": 0.9,
-                        stroke: "none",
-                        "stroke-width": 0,
-                        "stroke-opacity": 0
-                      }
-                    }}
-                    series={{
-                      regions: [
-                        {
-                          values: mapData,
-                          scale: ["#AAAAAA", "#444444"],
-                          normalizeFunction: "polynomial"
-                        }
-                      ]
-                    }}
-                  />
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[{ i: "now-ui-icons ui-2_time-alarm", t: "Last 7 days" }]}
-                  </Stats>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col xs={12} md={12}>
               <Card>
                 <CardHeader>
@@ -371,7 +456,7 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-          </Row>
+          </Row> */}
         </div>
       </div>
     );

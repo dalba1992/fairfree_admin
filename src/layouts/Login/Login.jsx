@@ -103,7 +103,7 @@ class LoginPage extends React.Component {
         <div>
           <NotificationAlert ref="notificationAlert" />
           <div className="full-page-content"
-            style={{ backgroundColor: '#2CA8FF', height: '-webkit-fill-available' }}
+            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
           >
             <div className="login-page">
               <Container>
@@ -163,7 +163,7 @@ class LoginPage extends React.Component {
         <div>
           <NotificationAlert ref="notificationAlert" />
           <div className="full-page-content"
-            style={{ backgroundColor: '#2CA8FF', height: '-webkit-fill-available' }}
+            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
           >
             <div className="login-page">
               <Container>
@@ -205,7 +205,7 @@ class LoginPage extends React.Component {
                             <i className="now-ui-icons ui-1_lock-circle-open" />
                           </InputGroupAddon>
                           <Input
-                            type="text"
+                            type="password"                    
                             placeholder="Password"
                             onFocus={e => this.setState({ passwordFocus: true })}
                             onBlur={e => this.setState({ passwordFocus: false })}

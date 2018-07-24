@@ -131,26 +131,26 @@ const dashboardPanelChart = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "9AM",
+        "10AM",
+        "11AM",
+        "12AM",
+        "1PM",
+        "2PM",
+        "3PM",
+        "4PM",
+        "5PM",
+        "6PM",
+        "7PM",
+        "8PM"
       ],
       datasets: [
         {
           label: "Data",
           borderColor: chartColor,
           pointBorderColor: chartColor,
-          pointBackgroundColor: "#2c2c2c",
-          pointHoverBackgroundColor: "#2c2c2c",
+          pointBackgroundColor: "#0E2747",
+          pointHoverBackgroundColor: "#0E2747",
           pointHoverBorderColor: chartColor,
           pointBorderWidth: 1,
           pointHoverRadius: 7,
@@ -281,28 +281,46 @@ const dashboardActiveUsersChart = {
 const dashboardSummerChart = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#18ce0f");
-    gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#18ce0f", 0.4));
+    // var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    // gradientStroke.addColorStop(0, "#18ce0f");
+    // gradientStroke.addColorStop(1, chartColor);
+    var gradientFill0 = ctx.createLinearGradient(210, 150, 420, 150);
+    gradientFill0.addColorStop(0, "#E8F225");
+    gradientFill0.addColorStop(1, 'white');
+    var gradientFill1 = ctx.createLinearGradient(0, 250, 0, 50);
+    gradientFill1.addColorStop(0, "#F24D25");
+    gradientFill1.addColorStop(1, 'white');
+    var gradientFill2 = ctx.createLinearGradient(0, 250, 0, 50);
+    gradientFill2.addColorStop(0, "#872193");
+    gradientFill2.addColorStop(1, 'white');
+    var gradientFill3 = ctx.createLinearGradient(0, 150, 210, 150);
+    gradientFill3.addColorStop(0, "#2F8AD3");
+    gradientFill3.addColorStop(1, '#2F8AD37F');
+    var gradientFill4 = ctx.createLinearGradient(100, 150, 210, 150);
+    gradientFill4.addColorStop(0, "#429321");
+    gradientFill4.addColorStop(1, '#4293217F');
     return {
-      labels: ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"],
+      labels: ["10-20,", "20-30", "30-40", "40-50", "50+",],
       datasets: [
         {
           label: "Email Stats",
-          borderColor: "#18ce0f",
+          borderColor: "#fff",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#18ce0f",
-          pointBorderWidth: 2,
+          pointBorderWidth: 1,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
           pointRadius: 4,
           fill: true,
-          backgroundColor: gradientFill,
+          backgroundColor: [
+            gradientFill0,
+            gradientFill1,
+            gradientFill2,
+            gradientFill3,
+            gradientFill4
+          ],
           borderWidth: 2,
-          data: [40, 500, 650, 700, 1200, 1250, 1300, 1900]
+          data: [818, 982, 1693, 1526, 248]
         }
       ]
     };
@@ -318,29 +336,25 @@ const dashboardActiveCountriesCard = {
   data: canvas => {
     var ctx = canvas.getContext("2d");
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#2CA8FF");
+    gradientStroke.addColorStop(0, "#4A90E2");
     gradientStroke.addColorStop(1, chartColor);
-    var gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, hexToRGB("#2CA8FF", 0.4));
+    var gradientFill0 = ctx.createLinearGradient(0, 0, 0, 100);
+    gradientFill0.addColorStop(0, "#4BA8E0");
+    gradientFill0.addColorStop(1, 'white');
+    var gradientFill1 = ctx.createLinearGradient(0, 0, 0, 100);
+    gradientFill1.addColorStop(0, "#CB5A6B");
+    gradientFill1.addColorStop(1, 'white');
+
+
     return {
       labels: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October"
+        "Gender",
       ],
       datasets: [
         {
-          label: "Active Countries",
-          backgroundColor: gradientFill,
-          borderColor: "#2CA8FF",
+          label: "Male",
+          backgroundColor: gradientFill0,
+          borderColor: "#fff",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#2CA8FF",
           pointBorderWidth: 2,
@@ -349,12 +363,76 @@ const dashboardActiveCountriesCard = {
           pointRadius: 4,
           fill: true,
           borderWidth: 2,
-          data: [80, 78, 86, 96, 83, 85, 76, 75, 88, 90]
+          data: [70920, ]
+        },
+        {
+          label: "Female",
+          backgroundColor: gradientFill1,
+          borderColor: "#fff",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#2CA8FF",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          borderWidth: 2,
+          data: [51300, ]
         }
       ]
     };
   },
-  options: gradientChartOptionsConfiguration
+  options: {
+    maintainAspectRatio: false,
+    legend: {
+      display: false
+    },
+    tooltips: {
+      bodySpacing: 4,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest",
+      xPadding: 10,
+      yPadding: 10,
+      caretPadding: 10
+    },
+    responsive: 1,
+    scales: {
+      yAxes: [
+        {
+          stacked:true,
+          display: 0,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          }
+        }
+      ],
+      xAxes: [
+        {
+          stacked:true,
+          display: 0,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          }
+        }
+      ]
+    },
+    layout: {
+      padding: { left: 0, right: 0, top: 15, bottom: 15 }
+    }
+  }
 };
 
 // ##############################
@@ -372,18 +450,18 @@ const chartsLine1 = {
     gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
     return {
       labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
+        "9PM",
+        "10PM",
+        "11PM",
+        "12PM",
+        "1AM",
+        "2AM",
+        "3AM",
+        "4AM",
+        "5AM",
+        "6AM",
+        "7AM",
+        "8AM"
       ],
       datasets: [
         {

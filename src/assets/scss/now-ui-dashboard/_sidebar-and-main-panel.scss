@@ -613,8 +613,7 @@
   padding-top: 80px;
   padding-bottom: 45px;
   position: relative;
-  @include panel-gradient($black-color);
-
+  background:linear-gradient(to right, #0E2747, #2B5686);
   .header{
     .title{
       color: $white-color;

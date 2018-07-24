@@ -9,7 +9,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { Button } from "components";
 
 import avatar from "assets/img/ryan.jpg";
-import logo from "logo-white.svg";
+import logo from "assets/img/logo.png";
 
 var ps;
 
@@ -69,7 +69,7 @@ class Sidebar extends React.Component {
         <div className="sidebar" data-color="blue">
           <div className="logo">
             <a
-              href="https://www.creative-tim.com"
+              href="/"
               className="simple-text logo-mini"
             >
               <div className="logo-img">
@@ -77,10 +77,10 @@ class Sidebar extends React.Component {
               </div>
             </a>
             <a
-              href="https://www.creative-tim.com"
+              href="/"
               className="simple-text logo-normal"
             >
-              Creative Tim
+              FairFree
             </a>
             <div className="navbar-minimize">
               <Button

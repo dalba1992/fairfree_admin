@@ -8166,10 +8166,7 @@ Created using IcoMoon - icomoon.io
   padding-top: 80px;
   padding-bottom: 45px;
   position: relative;
-  background: #2c2c2c;
-  /* fallback for old browsers */
-  background: linear-gradient(160deg, #2c2c2c 0%, #1f1f1f 100%);
-  background-size: 105%; }
+  background: linear-gradient(to right, #0E2747, #2B5686); }
   .panel-header .header .title {
     color: #FFFFFF; }
   .panel-header .header .category {
@@ -8730,6 +8727,18 @@ Created using IcoMoon - icomoon.io
   margin-left: -15px;
   margin-right: -15px; }
 
+.card-chart .chart-area-pie {
+  height: 300px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  margin-right: -15px; }
+
+.card-chart .chart-area-stack {
+  height: 100px;
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  margin-right: -15px; }
+
 .card-chart .card-footer {
   margin-top: 15px; }
   .card-chart .card-footer .stats {
@@ -9114,7 +9123,7 @@ Created using IcoMoon - icomoon.io
   .login-page .card-login .btn-wd {
     min-width: 180px; }
   .login-page .card-login .logo-container {
-    width: 150px;
+    width: 70px;
     margin: 0 auto;
     margin-bottom: 30px; }
     .login-page .card-login .logo-container img {
@@ -10090,7 +10099,7 @@ Created using IcoMoon - icomoon.io
   .navbar-collapse {
     background: none !important; }
   .table-responsive {
-    overflow: scroll; }
+    overflow: hidden; }
   .navbar .navbar-toggle {
     display: none; }
   .navbar-nav .nav-link.profile-photo {

@@ -359,17 +359,12 @@ const ro_flag = require("../assets/img/flags/RO.png");
 const br_flag = require("../assets/img/flags/BR.png");
 
 const table_data = [
-  { flag: us_flag, country: "USA", count: "2.920", percentage: "53.23%" },
-  { flag: de_flag, country: "Germany", count: "1.300", percentage: "20.43%" },
-  { flag: au_flag, country: "Australia", count: "760", percentage: "10.35%" },
-  {
-    flag: gb_flag,
-    country: "United Kingdom",
-    count: "690",
-    percentage: "7.87%"
-  },
-  { flag: ro_flag, country: "Romania", count: "600", percentage: "5.94%" },
-  { flag: br_flag, country: "Brasil", count: "550", percentage: "4.34%" }
+  { city: "Seoul", count: "2.920", percentage: "53.23%" },
+  { city: "Daejeon", count: "1.300", percentage: "20.43%" },
+  { city: "Jeonju", count: "760", percentage: "10.35%" },
+  { city: "Busan", count: "690", percentage: "7.87%" },
+  { city: "Jaeju", count: "600", percentage: "5.94%" },
+  { city: "Daegu", count: "550", percentage: "4.34%" }
 ];
 
 // tasks list for Tasks card in Dashboard view
