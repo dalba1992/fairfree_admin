@@ -103,7 +103,7 @@ class LoginPage extends React.Component {
         <div>
           <NotificationAlert ref="notificationAlert" />
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
+            style={{ backgroundColor:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
           >
             <div className="login-page">
               <Container>
@@ -133,6 +133,7 @@ class LoginPage extends React.Component {
                             onFocus={e => this.setState({ verifycodeFocus: true })}
                             onBlur={e => this.setState({ verifycodeFocus: false })}
                             onChange={(e) => this.setState({ verifycode: e.target.value })}
+                            style={{fontSize:'16px'}}
                           />
                         </InputGroup>
                       </CardBody>
@@ -163,7 +164,7 @@ class LoginPage extends React.Component {
         <div>
           <NotificationAlert ref="notificationAlert" />
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
+            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
           >
             <div className="login-page">
               <Container>
@@ -192,6 +193,7 @@ class LoginPage extends React.Component {
                             onFocus={e => this.setState({ usernameFocus: true })}
                             onBlur={e => this.setState({ usernameFocus: false })}
                             onChange={(e) => this.setState({ username: e.target.value })}
+                            style={{fontSize:'16px'}}
                           />
                         </InputGroup>
                         <InputGroup
@@ -210,6 +212,7 @@ class LoginPage extends React.Component {
                             onFocus={e => this.setState({ passwordFocus: true })}
                             onBlur={e => this.setState({ passwordFocus: false })}
                             onChange={(e) => this.setState({ password: e.target.value })}
+                            style={{fontSize:'16px'}}
                           />
                         </InputGroup>
                       </CardBody>
