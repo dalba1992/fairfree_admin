@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://creativetimofficial.github.io/now-ui-dashboard-pro-react/#/documentation/tutorial",
   "dependencies": {
+    "aws-amplify": "^1.0.4",
     "bootstrap": "4.0.0-beta",
     "chart.js": "2.7.1",
     "moment": "2.19.2",
