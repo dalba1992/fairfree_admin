@@ -13,10 +13,11 @@ import {
 } from "reactstrap";
 
 import NotificationAlert from "react-notification-alert";
-
 import { Button } from "components";
 import { hist } from '../../index';
 import nowLogo from "assets/img/logo.png";
+
+import { Auth } from "aws-amplify";
 
 // import bgImage from "assets/img/bg14.jpg";
 
@@ -24,15 +25,17 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVerify: false, 
-      verifycode:''
+      isVerify: false,
+      verifycode: '',
+      username: '',
+      password: ''
     };
   }
 
-  credentialsVaildate() {    
-    if (!this.state.username) {this.notify_username_null(); return;}
-    if (!this.state.password) {this.notify_password_null(); return;}
-    this.notify_success_login();
+  credentialsVaildate() {
+    if (!this.state.username) { this.notify_username_null(); return; }
+    if (!this.state.password) { this.notify_password_null(); return; }
+    // this.notify_success_login();
     this.login();
   }
 
@@ -43,7 +46,7 @@ class LoginPage extends React.Component {
       message: (
         <div>
           <div>
-           Please enter your username!
+            Please enter your username!
           </div>
         </div>
       ),
@@ -51,7 +54,7 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert.notificationAlert(options);
+    this.refs.notificationAlert2.notificationAlert(options);
   }
 
   notify_password_null() {
@@ -61,7 +64,7 @@ class LoginPage extends React.Component {
       message: (
         <div>
           <div>
-           Please enter your password!
+            Please enter your password!
           </div>
         </div>
       ),
@@ -69,7 +72,7 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert.notificationAlert(options);
+    this.refs.notificationAlert2.notificationAlert(options);
   }
 
   notify_success_login() {
@@ -79,7 +82,7 @@ class LoginPage extends React.Component {
       message: (
         <div>
           <div>
-          Verification code has been sent to your mobile device.
+            Verification code has been sent to your mobile device.
           </div>
         </div>
       ),
@@ -87,11 +90,16 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert.notificationAlert(options);
+    this.refs.notificationAlert1.notificationAlert(options);
   }
 
-  login() {
-    this.setState({ isVerify: true })
+  async login() {
+    try {
+      await Auth.signIn(this.state.username, this.state.password);
+      alert("Logged in");
+    } catch (e) {
+      alert(e.message);
+    }
   }
 
   verifyCode() {
@@ -101,9 +109,9 @@ class LoginPage extends React.Component {
     return (
       this.state.isVerify ?
         <div>
-          <NotificationAlert ref="notificationAlert" />
+          <NotificationAlert ref="notificationAlert1" />
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
+            style={{ background: 'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
           >
             <div className="login-page">
               <Container>
@@ -161,9 +169,9 @@ class LoginPage extends React.Component {
         /> */}
         </div> :
         <div>
-          <NotificationAlert ref="notificationAlert" />
+          <NotificationAlert ref="notificationAlert2" />
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
+            style={{ background: 'linear-gradient(to bottom, #57B9FF , #10509A)', height: '-webkit-fill-available' }}
           >
             <div className="login-page">
               <Container>
@@ -205,7 +213,7 @@ class LoginPage extends React.Component {
                             <i className="now-ui-icons ui-1_lock-circle-open" />
                           </InputGroupAddon>
                           <Input
-                            type="password"                    
+                            type="password"
                             placeholder="Password"
                             onFocus={e => this.setState({ passwordFocus: true })}
                             onBlur={e => this.setState({ passwordFocus: false })}
