@@ -5,6 +5,7 @@ import { Nav, Collapse } from "reactstrap";
 import NotificationAlert from "react-notification-alert";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
+import { Auth } from 'aws-amplify'
 
 import { Button } from "components";
 
@@ -61,6 +62,10 @@ class Sidebar extends React.Component {
     if (navigator.platform.indexOf("Win") > -1) {
       ps.destroy();
     }
+  }
+  logout() {
+    localStorage.removeItem('session');
+    // Auth.currentAuthenticatedUser().then((user)=>{console.log(user)})
   }
   render() {
     return (
@@ -200,7 +205,18 @@ class Sidebar extends React.Component {
                   </li>
                 );
               })}
+              <li className={'active'} onClick={() => this.logout()}>
+                <NavLink
+                  to={'/'}
+                  className="nav-link"
+                  activeClassName="active"
+                >
+                  <i className={"now-ui-icons arrows-1_minimal-left"} />
+                  <p>{'Log Out'}</p>
+                </NavLink>
+              </li>
             </Nav>
+
           </div>
         </div>
       </div>

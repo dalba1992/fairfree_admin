@@ -25,6 +25,7 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
       dropdownOpen: false,
+      dropdownOpen1: false,
       color: "transparent"
     };
     this.toggle = this.toggle.bind(this);
@@ -47,6 +48,11 @@ class Header extends React.Component {
   dropdownToggle(e) {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+  dropdownToggle1(e) {
+    this.setState({
+      dropdownOpen1: !this.state.dropdownOpen1
     });
   }
   getBrand() {
@@ -117,7 +123,7 @@ class Header extends React.Component {
           this.props.location.pathname.indexOf("full-screen-maps") !== -1
             ? "navbar-absolute fixed-top"
             : "navbar-absolute fixed-top " +
-              (this.state.color === "transparent" ? "navbar-transparent " : "")
+            (this.state.color === "transparent" ? "navbar-transparent " : "")
         }
       >
         <Container fluid>
@@ -134,60 +140,77 @@ class Header extends React.Component {
                 <span className="navbar-toggler-bar bar3" />
               </button>
             </div>
-            <NavbarBrand href="/">{this.getBrand()}</NavbarBrand>
+            <NavbarBrand href="/">{'Busan baby fair 2018'}</NavbarBrand>
           </div>
-          <NavbarToggler onClick={this.toggle}>
+          {/* <NavbarToggler onClick={this.toggle}>
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
-          </NavbarToggler>
+          </NavbarToggler> */}
           <Collapse
             isOpen={this.state.isOpen}
             navbar
             className="justify-content-end"
           >
-            <form>
+            {/* <form>
               <InputGroup className="no-border">
                 <Input placeholder="Search..." />
                 <InputGroupAddon>
                   <i className="now-ui-icons ui-1_zoom-bold" />
                 </InputGroupAddon>
               </InputGroup>
-            </form>
+            </form> */}
             <Nav navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="#pablo" className="nav-link">
                   <i className="now-ui-icons media-2_sound-wave" />
                   <p>
                     <span className="d-lg-none d-md-block">Stats</span>
                   </p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
+              <Dropdown
+                nav
+                isOpen={this.state.dropdownOpen1}
+                toggle={e => this.dropdownToggle1(e)}
+              >
+                <DropdownToggle caret nav>
+                  <span className="d-lg-none d-md-block">Today</span>
+                  <p>
+                    <span className="d-lg-none d-md-block">Some Actions</span>
+                  </p>
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem tag="a">Log Out</DropdownItem>
+                  <DropdownItem tag="a">Another Action</DropdownItem>
+                  <DropdownItem tag="a">Something else here</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
               <Dropdown
                 nav
                 isOpen={this.state.dropdownOpen}
                 toggle={e => this.dropdownToggle(e)}
               >
                 <DropdownToggle caret nav>
-                  <i className="now-ui-icons location_world" />
+                  <i className="now-ui-icons users_single-02" />
                   <p>
                     <span className="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem tag="a">Action</DropdownItem>
-                  <DropdownItem tag="a">Another Action</DropdownItem>
-                  <DropdownItem tag="a">Something else here</DropdownItem>
+                  <DropdownItem tag="a">Log Out</DropdownItem>
+                  {/* <DropdownItem tag="a">Another Action</DropdownItem>
+                  <DropdownItem tag="a">Something else here</DropdownItem> */}
                 </DropdownMenu>
               </Dropdown>
-              <NavItem>
+              {/* <NavItem>
                 <Link to="#pablo" className="nav-link">
                   <i className="now-ui-icons users_single-02" />
                   <p>
                     <span className="d-lg-none d-md-block">Account</span>
                   </p>
                 </Link>
-              </NavItem>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Container>

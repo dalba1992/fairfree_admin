@@ -35,7 +35,6 @@ class LoginPage extends React.Component {
   credentialsVaildate() {
     if (!this.state.username) { this.notify_username_null(); return; }
     if (!this.state.password) { this.notify_password_null(); return; }
-    // this.notify_success_login();
     this.login();
   }
 
@@ -54,7 +53,7 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert2.notificationAlert(options);
+    this.refs.notificationAlert.notificationAlert(options);
   }
 
   notify_password_null() {
@@ -72,7 +71,7 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert2.notificationAlert(options);
+    this.refs.notificationAlert.notificationAlert(options);
   }
 
   notify_success_login() {
@@ -90,15 +89,34 @@ class LoginPage extends React.Component {
       icon: "now-ui-icons ui-1_bell-53",
       autoDismiss: 7
     };
-    this.refs.notificationAlert1.notificationAlert(options);
+    this.refs.notificationAlert.notificationAlert(options);
+  }
+
+  notify_fail(message) {
+    var options = {};
+    options = {
+      place: 'tc',
+      message: (
+        <div>
+          <div>
+            {message}
+          </div>
+        </div>
+      ),
+      type: 'danger',
+      icon: "now-ui-icons ui-1_bell-53",
+      autoDismiss: 7
+    };
+    this.refs.notificationAlert.notificationAlert(options);
   }
 
   async login() {
     try {
-      await Auth.signIn(this.state.username, this.state.password);
-      alert("Logged in");
+      await Auth.signIn(this.state.username, this.state.password).then((r) => { console.log(r); localStorage.setItem('session', r.Session) });
+      this.notify_success_login();
+      this.setState({ isVerify: true })
     } catch (e) {
-      alert(e.message);
+      this.notify_fail(e.message)
     }
   }
 
@@ -107,11 +125,11 @@ class LoginPage extends React.Component {
   }
   render() {
     return (
-      this.state.isVerify ?
-        <div>
-          <NotificationAlert ref="notificationAlert1" />
+      <div>
+        <NotificationAlert ref="notificationAlert" />
+        {this.state.isVerify ?
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
+            style={{ background: 'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
           >
             <div className="login-page">
               <Container>
@@ -125,6 +143,7 @@ class LoginPage extends React.Component {
                       </CardHeader>
                       <CardBody>
                         <InputGroup
+                          id='verifycode'
                           size="lg"
                           className={
                             "no-border " +
@@ -136,12 +155,12 @@ class LoginPage extends React.Component {
                           </InputGroupAddon>
                           <Input
                             type="text"
-                            placeholder="Verification Code"
                             value={this.state.verifycode}
+                            placeholder="Verification Code"
                             onFocus={e => this.setState({ verifycodeFocus: true })}
                             onBlur={e => this.setState({ verifycodeFocus: false })}
                             onChange={(e) => this.setState({ verifycode: e.target.value })}
-                            style={{fontSize:'16px'}}
+                            style={{ fontSize: '16px' }}
                           />
                         </InputGroup>
                       </CardBody>
@@ -162,17 +181,10 @@ class LoginPage extends React.Component {
                 </Col>
               </Container>
             </div>
-          </div>
-          {/* <div
-          className="full-page-background"
-          // style={{ backgroundImage: "url(" + bgImage + ")" }}
-          style={{ backgroundColor: '#2CA8FF' }}
-        /> */}
-        </div> :
-        <div>
-          <NotificationAlert ref="notificationAlert2" />
+
+          </div> :
           <div className="full-page-content"
-            style={{ background:'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
+            style={{ background: 'linear-gradient(to bottom, #57B9FF , #10509A)', height: 'auto', minHeight: '100vh' }}
           >
             <div className="login-page">
               <Container>
@@ -201,7 +213,7 @@ class LoginPage extends React.Component {
                             onFocus={e => this.setState({ usernameFocus: true })}
                             onBlur={e => this.setState({ usernameFocus: false })}
                             onChange={(e) => this.setState({ username: e.target.value })}
-                            style={{fontSize:'16px'}}
+                            style={{ fontSize: '16px' }}
                           />
                         </InputGroup>
                         <InputGroup
@@ -220,7 +232,7 @@ class LoginPage extends React.Component {
                             onFocus={e => this.setState({ passwordFocus: true })}
                             onBlur={e => this.setState({ passwordFocus: false })}
                             onChange={(e) => this.setState({ password: e.target.value })}
-                            style={{fontSize:'16px'}}
+                            style={{ fontSize: '16px' }}
                           />
                         </InputGroup>
                       </CardBody>
@@ -234,33 +246,16 @@ class LoginPage extends React.Component {
                         >
                           Login
                       </Button>
-                        {/* <div className="pull-left">
-                        <h6>
-                          <a href="#pablo" className="link footer-link">
-                            Create Account
-                          </a>
-                        </h6>
-                      </div>
-                      <div className="pull-right">
-                        <h6>
-                          <a href="#pablo" className="link footer-link">
-                            Need Help?
-                          </a>
-                        </h6>
-                      </div> */}
+
                       </CardFooter>
                     </Card>
                   </Form>
                 </Col>
               </Container>
             </div>
-          </div>
-          {/* <div
-          className="full-page-background"
-          // style={{ backgroundImage: "url(" + bgImage + ")" }}
-          style={{ backgroundColor: '#2CA8FF' }}
-        /> */}
-        </div>
+
+          </div>}
+      </div>
 
     );
   }
